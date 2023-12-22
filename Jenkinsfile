@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   // Declare the variable at a higher scope
-  def customImage
+  //def customImage
   
   stages {
     stage('Git Checkout') {
