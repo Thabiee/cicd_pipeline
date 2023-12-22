@@ -36,6 +36,20 @@ pipeline {
       }
     }
 
+    stage('Docker Image Push') {
+      steps {
+        script {
+          docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id')
+
+          {
+            app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
+          }
+        }
+
+      }
+    }
+
   }
   environment {
     registry = 'thabie/cicd_pipeline'
