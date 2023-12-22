@@ -44,7 +44,7 @@ pipeline {
   steps {
     script {
       docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id') {
-        customImage.push("${env.BUILD_ID}")
+        customImage.push("${env.BUILD_NUMBER}")
         customImage.push("latest")
       }
     }
