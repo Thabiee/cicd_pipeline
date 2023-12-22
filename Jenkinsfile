@@ -1,5 +1,9 @@
 pipeline {
   agent any
+
+  // Declare the variable at a higher scope
+  def customImage
+  
   stages {
     stage('Git Checkout') {
       steps {
@@ -40,7 +44,7 @@ pipeline {
   steps {
     script {
       docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id') {
-        customImage.push("${env.BUILD_NUMBER}")
+        customImage.push("${env.BUILD_ID}")
         customImage.push("latest")
       }
     }
