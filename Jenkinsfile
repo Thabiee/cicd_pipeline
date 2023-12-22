@@ -1,10 +1,8 @@
 pipeline {
-    agent any
-    environment {
-        registry = 'thabie/cicd_pipeline'
-    }
+  agent any
 
-    def customImage
+  // Declare the variable at a higher scope
+  //def customImage
   
   stages {
     stage('Git Checkout') {
@@ -54,9 +52,9 @@ pipeline {
 }
 
   }
-  //environment {
-   // registry = 'thabie/cicd_pipeline'
- // }
+  environment {
+    registry = 'thabie/cicd_pipeline'
+  }
   post {
     always {
       echo 'Pipeline completed.'
